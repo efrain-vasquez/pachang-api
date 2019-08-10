@@ -5,7 +5,7 @@ function create ({ name, location, items, date }) {
     //newEvent.save()
     
     //use create
-    return Event.Create({ name, location, items, date })
+    return Event.create({ name, location, items, date })
 }
 
 function getAll () {
@@ -19,11 +19,15 @@ function getById (id) {
 
 async function assignCarrier (eventId, indexItem, carrierName) {
     const event = await Event.findById(eventId)
-    event.items(indexitem).carrier = carrierName
+    event.items[indexItem].carrier = carrierName
     return event.save()
 } 
 
 
 module.exports = {
-    create
+    create,
+    getAll,
+    getById,
+    assignCarrier
 }
+
